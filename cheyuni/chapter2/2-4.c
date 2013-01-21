@@ -4,17 +4,21 @@
 /* the string s2. */
 
 void squeeze(char s1[], char s2[]){
-	int i, i2, j;
+    int i, k, j;
 
-	for (i = j = 0; s1[i] != '\0'; i++) {
-		for (i2 = 0; s2[i2] != '\0'; i2++) {
-			if (s2[i2] == s1[i])
-				break;
-		}
-		if (s2[i2] == '\0')
-			s1[j++] = s1[i];
+    for (i = j = 0; s1[i] != '\0'; i++){
+	for (k = 0; s2[k] != '\0'; k++){
+	    /* printf("s2[k] : %c, k : %d, ", s2[k], k); */
+	    /* printf("s1[i] : %c, i : %d", s1[i], i);	 */
+	    if(s2[k] == s1[i])
+		break;
 	}
-	s1[j] = '\0';
+	if (s2[k] == '\0') {
+	    s1[j++] = s1[i];
+	}
+	printf("\n");
+    }
+    s1[j] = '\0';
 }
 
 int main(int argc, char *argv[]){
@@ -23,7 +27,7 @@ int main(int argc, char *argv[]){
     squeeze(hex, target);
 
     printf("%s", hex);
-    /* printf("%d", target);     */
 
     return 0;
 }
+
